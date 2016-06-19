@@ -1,3 +1,4 @@
+from os import environ
 from socket import gethostname
 
 from django.conf import settings
@@ -13,6 +14,9 @@ def info(request):
         'version': settings.VERSION,
         'hostname': gethostname(),
     }
+    ip = environ.get('MY_POD_IP')
+    if ip:
+        data['ip'] = ip
     return JsonResponse(data)
 
 

@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: web
+  name: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: web
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: web
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_PASSWORD
+          value: my-secret-pw
+        - name: QOTD
+          value: Nostalgia isn't what it used to be.
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        image: web:2
+        name: web
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
