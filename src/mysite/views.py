@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from os import environ
 from socket import gethostname
 
@@ -17,6 +18,7 @@ def info(request):
     ip = environ.get('MY_POD_IP')
     if ip:
         data['ip'] = ip
+    data = OrderedDict(sorted(data.items(), key=lambda t: t[0]))
     return JsonResponse(data)
 
 
