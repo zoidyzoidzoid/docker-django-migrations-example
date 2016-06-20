@@ -9,10 +9,10 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-RUN pip install -U pip setuptools virtualenv wheel
+RUN pip install --no-cache-dir -U pip setuptools virtualenv wheel
 
 COPY src/requirements.txt /usr/src/app/
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 COPY src /usr/src/app
 
 COPY configs/nginx.conf /etc/nginx/
