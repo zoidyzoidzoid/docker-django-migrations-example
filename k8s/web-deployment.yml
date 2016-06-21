@@ -22,8 +22,6 @@ spec:
       - env:
         - name: POSTGRES_PASSWORD
           value: my-secret-pw
-        - name: QOTD
-          value: Nostalgia isn't what it used to be.
         - name: MY_POD_IP
           valueFrom:
             fieldRef:
