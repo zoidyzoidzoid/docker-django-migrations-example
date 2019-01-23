@@ -1,5 +1,5 @@
 dj-database-url==0.4.1
-Django==1.9.6
+django>=1.11.18
 djangorestframework==3.3.3
 factory-boy==2.7.0
 fake-factory==0.5.7
